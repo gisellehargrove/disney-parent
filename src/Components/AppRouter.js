@@ -4,6 +4,14 @@ import Login from './Login';
 import Signup from './Signup';
 import Home from './Home';
 
+const checkLocalStorage = () => {
+  if(localStorage.getItem('token')) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const AppRouter = () => {
   return (
     <Router>
@@ -17,8 +25,20 @@ const AppRouter = () => {
             return <Login history={props.history}/>
           }
         }}  />
-      <Route path="/signup" component={Signup} />
-      <Route path="/home" component={Home} />
+      <Route
+        path="/signup"
+        render={(props) => {
+          return <Signup history={props.history} />
+        }} />
+      <Route
+        path="/home"
+        render={(props) => {
+          if(!checkLocalStorage()) {
+            return <Redirect to="/" />
+          } else {
+            return <Home />
+          }
+        }} />
     </Router>
   );
 };
