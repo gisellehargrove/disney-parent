@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Signup() {
+export default function Signup(props) {
   const [creds, setCreds] = useState({username: '', password: ''});
   const classes = useStyles();
 
@@ -33,7 +33,7 @@ export default function Signup() {
   const handleSubmit = e => {
     axios.post('https://disneyparents.herokuapp.com/createnewuser', creds).then(res => {
       localStorage.setItem('token', window.btoa('lambda-client:lambda-secret'));
-      window.location.href = '/home';
+      props.history.push('/home');
       creds.username = '';
       creds.password = '';
     }).catch(err => console.dir(err));

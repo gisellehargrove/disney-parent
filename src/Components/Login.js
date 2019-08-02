@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function Login() {
+export default function Login(props) {
   const [creds, setCreds] = useState({username: '', password: ''});
   const classes = useStyles();
 
@@ -44,7 +44,7 @@ export default function Login() {
         localStorage.setItem('token', res.data.access_token);
         creds.username = '';
         creds.password = '';
-        window.location.href = '/home';
+        props.history.push('/home');
     }).catch(err => console.dir(err));
       e.preventDefault();
   };
