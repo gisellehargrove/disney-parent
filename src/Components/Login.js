@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
@@ -49,6 +50,11 @@ export default function Login(props) {
       e.preventDefault();
   };
 
+  const handleClick = () => {
+    // console.log(history)
+    // props.history.push('/signup');
+  };
+
   return (
     <div className="form-container">
       <form className={classes.container} autoComplete="off" onSubmit={event => handleSubmit(event)}>
@@ -72,7 +78,9 @@ export default function Login(props) {
           onChange={event => handleChange(event)}
         />
         <Button type="submit" variant="outlined" color="primary" className={classes.button}>Log In</Button>
-        <Button href="/signup" className={classes.button} color="primary" variant="outlined">Sign Up</Button>
+        <Link to="/signup">
+          <Button onClick={handleClick} className={classes.button} color="primary" variant="outlined">Sign Up</Button>
+        </Link>
       </form>
     </div>
   );
