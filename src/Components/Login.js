@@ -79,7 +79,7 @@ export default function Login(props) {
         />
         <Button type="submit" variant="outlined" color="primary" className={classes.button}>Log In</Button>
         <Link to="/signup">
-          <Button onClick={handleClick} className={classes.button} color="primary" variant="outlined">Sign Up</Button>
+          <Button className={classes.button} color="primary" variant="outlined">Sign Up</Button>
         </Link>
       </form>
     </div>
