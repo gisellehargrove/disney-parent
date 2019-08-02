@@ -29,7 +29,6 @@ export default function TicketList() {
 
   useEffect(() => {
     axios.get('https://disneyparents.herokuapp.com/tickets/tickets').then(response => {
-      console.log(response.data);
       setTickets(response.data);
     }).catch(err => {
       console.dir(err);

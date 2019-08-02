@@ -10,11 +10,11 @@ const AppRouter = () => {
       <Route
         exact
         path="/"
-        render={() => {
+        render={(props) => {
           if(localStorage.getItem('token')) {
             return <Redirect to="/home" />
           } else {
-            return <Login />
+            return <Login history={props.history}/>
           }
         }}  />
       <Route path="/signup" component={Signup} />

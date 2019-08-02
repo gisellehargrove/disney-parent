@@ -56,7 +56,6 @@ export default function CreateRequest() {
   useEffect(() => {
     axios.get('https://disneyparents.herokuapp.com/attractions/attractions').then(response => {
       setRides(response.data);
-      console.log(response.data);
     });
     axios.get('https://disneyparents.herokuapp.com/restaurants/restaurants').then(response => {
       setRestaurants(response.data)
